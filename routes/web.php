@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/settings/regions/{region}', [SettingController::class, 'update_region'])->name('settings.update_region');
 
     Route::resource("users", UserController::class);
+    Route::resource("customers", CustomerController::class);
 });
 
 require __DIR__ . '/auth.php';

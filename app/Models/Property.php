@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Region extends Model
+class Property extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function manager()
+    public function region()
     {
-
-        return $this->hasOne(User::class, "id", "region_manager_id");
+        return $this->hasOne(Region::class, "id", "region_id");
     }
 }
