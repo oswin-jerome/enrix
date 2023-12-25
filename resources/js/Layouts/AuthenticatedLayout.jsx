@@ -6,6 +6,8 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import NavBar from "@/Layouts/partials/NavBar";
 import AppHeader from "@/Layouts/partials/AppHeader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -13,6 +15,7 @@ export default function Authenticated({ user, header, children }) {
 
     return (
         <section className="h-screen flex">
+            <ToastContainer />
             <NavBar />
             <section className="flex-1 bg-slate-100 flex flex-col">
                 <AppHeader />

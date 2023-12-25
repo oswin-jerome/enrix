@@ -54,7 +54,7 @@ const NavBar = () => {
                     />
                 </svg>
             ),
-            to: "profile",
+            to: "users",
             sub_menus: [],
         },
     ];
