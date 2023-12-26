@@ -7,7 +7,7 @@ import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { toast } from "react-toastify";
 
-const Users = ({ users, roles }) => {
+const Users = ({ users, roles }: { users: any; roles: any }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { errors } = usePage().props;
@@ -131,7 +131,7 @@ const Users = ({ users, roles }) => {
                                     name=""
                                     id=""
                                 >
-                                    {roles.map((role) => {
+                                    {roles.map((role: any) => {
                                         return (
                                             <option
                                                 selected={
@@ -172,7 +172,7 @@ const Users = ({ users, roles }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user) => {
+                        {users.map((user: any) => {
                             return (
                                 <tr key={user.id}>
                                     <td>{user.id}</td>

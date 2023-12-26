@@ -5,6 +5,11 @@ const LoadingButton = ({
     children,
     className,
     loadingText = "Processing...",
+}: {
+    isLoading: boolean;
+    children: any;
+    className?: String;
+    loadingText?: any;
 }) => {
     return (
         <button
