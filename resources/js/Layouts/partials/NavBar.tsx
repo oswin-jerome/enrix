@@ -114,7 +114,7 @@ const NavBar = () => {
                 <ul className="flex flex-col ">
                     {menus.map((menu, index) => {
                         return (
-                            <li className="">
+                            <li className="" key={index}>
                                 <Link href={menu.to}>
                                     <div
                                         onClick={(e) => {
