@@ -1,7 +1,7 @@
 import LoadingButton from "@/Components/LoadingButton";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { router, usePage } from "@inertiajs/react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Drawer from "react-modern-drawer";
 
 import "react-modern-drawer/dist/index.css";
@@ -18,7 +18,7 @@ const Users = ({ users, roles }) => {
         role: "",
     });
 
-    const handleCreateUser = (e) => {
+    const handleCreateUser = (e: React.FormEvent) => {
         e.preventDefault();
 
         router.post(
@@ -152,7 +152,10 @@ const Users = ({ users, roles }) => {
                             </div>
 
                             <div>
-                                <LoadingButton isLoading={isLoading}>
+                                <LoadingButton
+                                    className=""
+                                    isLoading={isLoading}
+                                >
                                     Submit
                                 </LoadingButton>
                             </div>

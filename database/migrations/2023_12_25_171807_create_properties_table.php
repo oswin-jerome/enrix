@@ -26,17 +26,19 @@ return new class extends Migration
 
 
             // Approval
-            $table->boolean("is_approved")->default(false);
             $table->dateTime("approved_at")->nullable();
+            $table->dateTime("rejected_at")->nullable();
 
 
             $table->unsignedBigInteger("region_id");
+            $table->unsignedBigInteger("customer_id");
             $table->unsignedBigInteger("manager_id")->nullable();
             $table->timestamps();
 
             // Relations
             $table->foreign("region_id")->references("id")->on("regions");
             $table->foreign("manager_id")->references("id")->on("users");
+            $table->foreign("customer_id")->references("id")->on("customers");
         });
     }
 

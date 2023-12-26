@@ -11,6 +11,8 @@ class Region extends Model
 
     protected $guarded = [];
 
+    // TODO: add three letter region code
+
     public function manager()
     {
 

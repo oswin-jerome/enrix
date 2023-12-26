@@ -1,10 +1,10 @@
-import { Link } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 
 const AppHeader = () => {
     return (
         <header className="bg-white shadow-lg p-3 flex justify-between items-center z-10">
             <div className="pl-4">
-                <Link href="settings">
+                <Link href="/settings">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

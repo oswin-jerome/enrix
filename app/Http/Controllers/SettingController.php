@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -38,6 +39,8 @@ class SettingController extends Controller
 
     public function update_region(UpdateRegionRequest $request, Region $region): RedirectResponse
     {
+
+
 
         $region->update($request->validated());
 

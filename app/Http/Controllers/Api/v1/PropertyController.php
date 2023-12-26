@@ -24,7 +24,7 @@ class PropertyController extends Controller
     public function store(CreatePropertyApiRequest $request)
     {
         $request->validated();
-        $property = Property::create($request->validated());
+        $property = auth()->user()->properties()->create($request->validated());
         // TODO: Send notification to region manager and admin
         $property->region->manager->notify(new CustomerCreatedAPropertyNotification($property));
 

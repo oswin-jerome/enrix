@@ -15,4 +15,15 @@ class Property extends Model
     {
         return $this->hasOne(Region::class, "id", "region_id");
     }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, "id", "customer_id");
+    }
+
+    public function isApproved()
+    {
+
+        return $this->approved_at != null && $this->rejected_at == null;
+    }
 }
