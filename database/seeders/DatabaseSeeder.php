@@ -36,5 +36,10 @@ class DatabaseSeeder extends Seeder
 
         ]);
         $manager->assignRole('manager');
+
+        $this->call(CustomersTableSeeder::class);
+        $this->call(PropertiesTableSeeder::class);
+        $this->call(ActivityLogsTableSeeder::class);
+        $this->call(TasksTableSeeder::class);
     }
 }

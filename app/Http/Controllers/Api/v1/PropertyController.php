@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CreatePropertyApiRequest;
 use App\Models\Property;
+use App\Models\User;
 use App\Notifications\CustomerCreatedAPropertyNotification;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,17 @@ class PropertyController extends Controller
      */
     public function store(CreatePropertyApiRequest $request)
     {
-        $request->validated();
-        $property = auth()->user()->properties()->create($request->validated());
+        $data = $request->validated();
+        unset($data['auth_letter']);
+        $user = User::find(auth()->id());
+        $property = $user->properties()->create($data);
+
+        // TODO: Process Auth letter
+        if ($request->hasFile("auth_letter")) {
+            $property->addMediaFromRequest("auth_letter")->toMediaCollection('auth_letters');
+        }
+
+
         // TODO: Send notification to region manager and admin
         $property->region->manager->notify(new CustomerCreatedAPropertyNotification($property));
 

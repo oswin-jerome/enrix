@@ -1,6 +1,7 @@
 import Authenticated from "@/Layouts/AuthenticatedLayout";
+import { Customer } from "@/types";
 
-const Customers = ({ customers }) => {
+const Customers = ({ customers }: { customers: Customer[] }) => {
     return (
         <Authenticated>
             <section className="card">
@@ -29,7 +30,7 @@ const Customers = ({ customers }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {customers.map((customer) => {
+                        {customers.map((customer: Customer) => {
                             return (
                                 <tr key={customer.id}>
                                     <td>{customer.id}</td>

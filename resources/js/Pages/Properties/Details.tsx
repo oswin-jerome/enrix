@@ -2,20 +2,13 @@ import CardHeader from "@/Components/CardHeader";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link } from "@inertiajs/react";
 import _ from "lodash";
+import PropertyLayout from "./PropertyLayout";
 const PropertyDetails = ({ property }: { property: any }) => {
     const keys = ["manager_id", "customer.name"];
 
     return (
-        <Authenticated>
+        <PropertyLayout>
             <div className="grid gap-4">
-                <section className="card flex gap-3">
-                    <Link href="#" className="button">
-                        Finance
-                    </Link>
-                    <Link href="#" className="button">
-                        Activities
-                    </Link>
-                </section>
                 <section className="card">
                     <CardHeader
                         left={""}
@@ -38,7 +31,7 @@ const PropertyDetails = ({ property }: { property: any }) => {
                     </table>
                 </section>
             </div>
-        </Authenticated>
+        </PropertyLayout>
     );
 };
 

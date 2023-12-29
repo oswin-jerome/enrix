@@ -1,8 +1,9 @@
 import CardHeader from "@/Components/CardHeader";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
+import { Property } from "@/types";
 import { Link } from "@inertiajs/react";
 
-const Properties = ({ properties }: { properties: any }) => {
+const Properties = ({ properties }: { properties: Property[] }) => {
     return (
         <Authenticated>
             <section className="card">
@@ -22,16 +23,16 @@ const Properties = ({ properties }: { properties: any }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {properties.map((property: any) => {
+                        {properties.map((property) => {
                             return (
                                 <tr key={property.id}>
                                     <td>{property.property_id}</td>
                                     <td>{property.name}</td>
                                     <td>
                                         <Link
-                                            href={`/customers/${property.customer.id}`}
+                                            href={`/customers/${property?.customer?.id}`}
                                         >
-                                            {property.customer.name}
+                                            {property?.customer?.name}
                                         </Link>
                                     </td>
                                     <td>{property.type}</td>

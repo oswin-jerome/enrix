@@ -18,7 +18,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties = Property::with("customer")->get();
+        $properties = Property::with("customer")->where("property_id", "<>", "")->get();
 
         return Inertia::render("Properties/Properties", [
             "properties" => $properties
@@ -47,7 +47,8 @@ class PropertyController extends Controller
             "property" => $property,
             "customer" => $property->customer,
             "region" => $property->region,
-            "users" => User::all()
+            "users" => User::all(),
+            "auth_letter" => $property->getMedia("auth_letters")
         ]);
     }
 
@@ -69,7 +70,7 @@ class PropertyController extends Controller
         $property->customer->notify(new PropertyApprovedNotification($property));
 
         // TODO: redirect to property page once created
-        return redirect()->back();
+        return redirect("/properties/" . $property->id);
     }
 
     /**

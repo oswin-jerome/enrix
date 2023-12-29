@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -44,10 +46,21 @@ Route::middleware('auth')->group(function () {
 
     Route::resource("users", UserController::class);
     Route::resource("customers", CustomerController::class);
+
+
+    // +++++++++++++++++++ PROPERTY ROUTES ++++++++++++++++++++++++++
+
+    Route::prefix("/properties/{property}")->group(function () {
+        Route::resource("activity_logs", ActivityLogController::class);
+    });
+
+
     Route::get("properties/approvals", [PropertyController::class, "approvals"])->name("properties.approval");
     Route::get("properties/{property}/onboard", [PropertyController::class, "onboard"])->name("properties.onboard");
     Route::put("properties/{property}/approve", [PropertyController::class, "approve"])->name("properties.approve");
     Route::resource("properties", PropertyController::class);
+
+    Route::resource("tasks", TaskController::class);
 });
 
 require __DIR__ . '/auth.php';
