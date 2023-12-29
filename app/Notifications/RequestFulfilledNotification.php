@@ -2,26 +2,27 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
+use App\Models\Request;
+use App\Models\Task;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserAccountCreatedNotification extends Notification implements ShouldQueue
+class RequestFulfilledNotification extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    private $request;
+    private $task;
 
     /**
      * Create a new notification instance.
      */
-
-    private $user;
-    private $password;
-    public function __construct(User $user, $password)
+    public function __construct(Request $request, Task $task)
     {
-        $this->user = $user;
-        $this->password = $password;
+        $this->request = $request;
+        $this->task = $task;
     }
 
     /**
@@ -40,14 +41,10 @@ class UserAccountCreatedNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-
-            // TODO: get company name from env
-            ->subject("Welcome to ENRIX")
-            ->greeting("Hello!!, " . $this->user->name)
-            ->line('Welcome to the team.')
-            ->line('Your password is: ' . $this->password)
-            ->action('Login into your account', url('/login'))
-            ->line('Kindly reset your password after login!');
+            ->line('Your request has be fulfilled')
+            ->line('Request ID: ' . $this->request->id)
+            ->line('Task ID: ' . $this->task->id)
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -57,6 +54,8 @@ class UserAccountCreatedNotification extends Notification implements ShouldQueue
      */
     public function toArray(object $notifiable): array
     {
-        return [];
+        return [
+            //
+        ];
     }
 }

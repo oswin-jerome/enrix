@@ -1,6 +1,11 @@
-import { Link, router } from "@inertiajs/react";
+import { PageProps } from "@/types";
+import { Link, router, usePage } from "@inertiajs/react";
 
 const AppHeader = () => {
+    const props = usePage<PageProps>().props;
+
+    console.log("PROPS", props);
+
     return (
         <header className="bg-white shadow-lg p-3 flex justify-between items-center z-10">
             <div className="pl-4">
@@ -28,8 +33,10 @@ const AppHeader = () => {
             </div>
             <div className="flex items-center gap-4 cursor-pointer">
                 <div className="text-right">
-                    <p className="font-bold">Oswin Jerome</p>
-                    <p className="text-sm text-slate-500">Admin</p>
+                    <p className="font-bold">{props.auth.user.name}</p>
+                    <p className="text-sm text-slate-500">
+                        {props.auth.roles[0].replace("_", " ")}
+                    </p>
                 </div>
                 <img
                     className="h-12 w-12 rounded-full "

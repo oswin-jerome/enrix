@@ -2,26 +2,22 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserAccountCreatedNotification extends Notification implements ShouldQueue
+class RequestRejectedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-
-    private $user;
-    private $password;
-    public function __construct(User $user, $password)
+    private $reason = "";
+    public function __construct(String $reason)
     {
-        $this->user = $user;
-        $this->password = $password;
+        $this->reason = $reason;
     }
 
     /**
@@ -40,14 +36,9 @@ class UserAccountCreatedNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-
-            // TODO: get company name from env
-            ->subject("Welcome to ENRIX")
-            ->greeting("Hello!!, " . $this->user->name)
-            ->line('Welcome to the team.')
-            ->line('Your password is: ' . $this->password)
-            ->action('Login into your account', url('/login'))
-            ->line('Kindly reset your password after login!');
+            ->line('Your request has been canceled')
+            ->line('Reason: ' . $this->reason)
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -57,6 +48,8 @@ class UserAccountCreatedNotification extends Notification implements ShouldQueue
      */
     public function toArray(object $notifiable): array
     {
-        return [];
+        return [
+            //
+        ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CreatePropertyApiRequest;
+use App\Models\Customer;
 use App\Models\Property;
 use App\Models\User;
 use App\Notifications\CustomerCreatedAPropertyNotification;
@@ -26,7 +27,7 @@ class PropertyController extends Controller
     {
         $data = $request->validated();
         unset($data['auth_letter']);
-        $user = User::find(auth()->id());
+        $user = Customer::find(auth()->id());
         $property = $user->properties()->create($data);
 
         // TODO: Process Auth letter

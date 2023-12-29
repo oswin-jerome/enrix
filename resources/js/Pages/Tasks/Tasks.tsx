@@ -1,6 +1,7 @@
 import CardHeader from "@/Components/CardHeader";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { PageProps, Task } from "@/types";
+import { Link } from "@inertiajs/react";
 
 const Tasks = ({ tasks }: { tasks: Task[] }) => {
     return (
@@ -20,6 +21,7 @@ const Tasks = ({ tasks }: { tasks: Task[] }) => {
                         <th>Title</th>
                         <th>Status</th>
                         <th>Deadline</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,10 +29,18 @@ const Tasks = ({ tasks }: { tasks: Task[] }) => {
                         return (
                             <tr key={task.id}>
                                 <td>{task.id}</td>
-                                <td>{task.property.property_id}</td>
+                                <td>{task.property?.property_id}</td>
                                 <td>{task.title}</td>
                                 <td>{task.status}</td>
                                 <td>{task.eta}</td>
+                                <td>
+                                    <Link
+                                        className="button"
+                                        href={`/tasks/${task.id}`}
+                                    >
+                                        View
+                                    </Link>
+                                </td>
                             </tr>
                         );
                     })}

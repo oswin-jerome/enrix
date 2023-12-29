@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Request extends Model
 {
     use HasFactory;
 
@@ -16,8 +16,9 @@ class Task extends Model
         return $this->hasOne(Property::class, "id", "property_id");
     }
 
-    public function request()
+    public function task()
     {
-        return $this->belongsTo(Request::class, 'id', 'task_id', 'task');
+
+        return $this->hasOne(Task::class, 'id', 'task_id');
     }
 }

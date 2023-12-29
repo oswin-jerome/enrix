@@ -5,6 +5,8 @@ import { Media, Property } from "@/types";
 import { Link, router, usePage } from "@inertiajs/react";
 import { toInteger, toNumber } from "lodash";
 import { FormEvent, useState } from "react";
+import PropertyDetails from "../Details";
+import PropertyInfo from "../Partials/PropertyInfo";
 
 const OnBoard = ({
     property,
@@ -141,63 +143,7 @@ const OnBoard = ({
     return (
         <Authenticated>
             <div className="grid gap-4 overflow-scroll max-w-full">
-                <section className="card text-wrap">
-                    <CardHeader title={"Property details"}></CardHeader>
-                    <table className="table border-collapse">
-                        <tbody>
-                            {basics.map((basic, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <th className="border">
-                                            {basic.label}
-                                        </th>
-                                        <td className="border">
-                                            {basic.value}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </section>
-                <section className="card text-wrap">
-                    <CardHeader title={"Property Address"}></CardHeader>
-                    <table className="table border-collapse">
-                        <tbody>
-                            {propertyAddress.map((basic, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <th className="border">
-                                            {basic.label}
-                                        </th>
-                                        <td className="border">
-                                            {basic.value}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </section>
-                <section className="card text-wrap">
-                    <CardHeader title={"Poc Details"}></CardHeader>
-                    <table className="table border-collapse">
-                        <tbody>
-                            {pocDetails.map((basic, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <th className="border">
-                                            {basic.label}
-                                        </th>
-                                        <td className="border">
-                                            {basic.value}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </section>
+                <PropertyInfo property={property} />
                 <section className="card text-">
                     <Link href={`/customers/${property.customer_id}`}>
                         {customer.name}

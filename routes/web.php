@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
@@ -61,6 +62,9 @@ Route::middleware('auth')->group(function () {
     Route::resource("properties", PropertyController::class);
 
     Route::resource("tasks", TaskController::class);
+    Route::resource("requests", RequestController::class);
+    Route::post("requests/{request}/approve", [RequestController::class, "approve"])->name("requests.approve");
+    Route::post("requests/{request}/reject", [RequestController::class, "reject"])->name("requests.reject");
 });
 
 require __DIR__ . '/auth.php';

@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -33,7 +35,9 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+                "roles" => Auth::check() ? $request->user()->getRoleNames() : [],
             ],
+            "properties_for_approval" => Property::where("approved_at", "=", null)->where("rejected_at", "=", null)->count()
         ];
     }
 }

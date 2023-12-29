@@ -3,33 +3,29 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import { Link } from "@inertiajs/react";
 import _ from "lodash";
 import PropertyLayout from "./PropertyLayout";
-const PropertyDetails = ({ property }: { property: any }) => {
+import { Property } from "@/types";
+import PropertyInfo from "./Partials/PropertyInfo";
+const PropertyDetails = ({ property }: { property: Property }) => {
     const keys = ["manager_id", "customer.name"];
 
     return (
         <PropertyLayout>
             <div className="grid gap-4">
-                <section className="card">
-                    <CardHeader
-                        left={""}
-                        title={property.property_id}
-                        description="Approved property"
-                    ></CardHeader>
-                    <table className="table">
-                        <tbody>
-                            {keys.map((key, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <th className="border">{key}</th>
-                                        <td className="border">
-                                            {_.get(property, key)}
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </section>
+                <PropertyInfo property={property} />
+                {/* <section className="card text-">
+                    <Link href={`/customers/${property.customer_id}`}>
+                        {customer.name}
+                    </Link>
+                    <br />
+                    <h5>Documents</h5>
+                    {auth_letter.map((file) => {
+                        return (
+                            <a target="_blank" href={file.original_url}>
+                                {file.collection_name} - {file.file_name}
+                            </a>
+                        );
+                    })}
+                </section> */}
             </div>
         </PropertyLayout>
     );

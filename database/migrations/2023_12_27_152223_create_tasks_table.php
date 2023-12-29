@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum("status", ["not_started", "inprogress", "completed", "hold"])->default("not_started");
             $table->dateTime("eta")->nullable(); // if set it is a followup task
             $table->integer("progress")->default(0);
-
+            // TODO: add completed at timestamp
             $table->unsignedBigInteger("property_id");
             $table->foreign("property_id")->references("id")->on("properties");
 
