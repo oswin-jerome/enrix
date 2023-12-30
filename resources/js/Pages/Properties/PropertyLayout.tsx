@@ -15,7 +15,10 @@ const PropertyLayout = ({ children }: PropsWithChildren) => {
                     >
                         General
                     </Link>
-                    <Link href="#" className="button">
+                    <Link
+                        href={`/properties/${page.property.id}/finance/transactions`}
+                        className="button"
+                    >
                         Finance
                     </Link>
                     <Link

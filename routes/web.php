@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\FinanceTransactionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RequestController;
@@ -53,6 +54,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix("/properties/{property}")->group(function () {
         Route::resource("activity_logs", ActivityLogController::class);
+        Route::resource("finance/transactions", FinanceTransactionController::class);
     });
 
 

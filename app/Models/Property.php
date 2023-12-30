@@ -28,6 +28,11 @@ class Property extends Model implements HasMedia
         return $this->hasMany(ActivityLog::class, "property_id", "id");
     }
 
+    public function finance_transactions()
+    {
+        return $this->hasMany(FinanceTransaction::class, "property_id", "id");
+    }
+
     public function isApproved()
     {
 

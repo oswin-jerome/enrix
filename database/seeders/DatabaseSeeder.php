@@ -41,5 +41,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PropertiesTableSeeder::class);
         $this->call(ActivityLogsTableSeeder::class);
         $this->call(TasksTableSeeder::class);
+        $this->call(FinanceCategorySeeder::class);
     }
 }

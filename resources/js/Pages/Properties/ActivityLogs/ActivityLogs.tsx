@@ -2,8 +2,8 @@ import CardHeader from "@/Components/CardHeader";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import PropertyLayout from "../PropertyLayout";
 import Drawer from "react-modern-drawer";
-
 import "react-modern-drawer/dist/index.css";
+
 import { FormEvent, useState } from "react";
 import LoadingButton from "@/Components/LoadingButton";
 import { router } from "@inertiajs/react";
