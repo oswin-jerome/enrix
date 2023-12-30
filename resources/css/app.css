@@ -27,11 +27,11 @@
     }
 
     .card{
-        @apply bg-white p-4 rounded shadow;
+        @apply bg-white p-4 rounded shadow w-full max-w-[100%];
     }
 
     .table{
-      @apply  w-full text-left mt-6;
+      @apply  w-full max-w-[100%] text-left mt-6 overflow-hidden ;
     }
 
     .table thead{
@@ -39,7 +39,7 @@
     }
 
     .table td,.table th{
-        @apply p-3 border;
+        @apply p-3 border ;
     }
 
     

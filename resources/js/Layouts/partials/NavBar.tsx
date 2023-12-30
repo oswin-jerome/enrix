@@ -31,17 +31,17 @@ const NavBar = () => {
                 </svg>
             ),
             notification: null,
-            to: "#",
+            to: "/dashboard",
             sub_menus: [
-                {
-                    label: "Dashboard",
-                    to: "/dashboard",
-                },
-                {
-                    label: "Properties For Approval",
-                    to: "/properties/approvals",
-                    notification: props.properties_for_approval,
-                },
+                // {
+                //     label: "Dashboard",
+                //     to: "/dashboard",
+                // },
+                // {
+                //     label: "Properties For Approval",
+                //     to: "/properties/approvals",
+                //     notification: props.properties_for_approval,
+                // },
             ],
         },
         {
@@ -153,7 +153,7 @@ const NavBar = () => {
     ];
 
     return (
-        <aside className="bg-slate-700 text-white min-w-[250px] h-screen flex flex-col">
+        <aside className="bg-slate-700 text-white md:min-w-[250px] h-screen flex flex-col">
             <div className="logo  py-4 px-6 flex justify-center items-center gap-3">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -170,10 +170,12 @@ const NavBar = () => {
                     />
                 </svg>
 
-                <p className="font-bold text-2xl">ENRIX PROPS</p>
+                <p className="font-bold text-2xl hidden md:block">
+                    ENRIX PROPS
+                </p>
             </div>
             <nav className="mt-5 flex-1 overflow-scroll">
-                <ul className="flex flex-col ">
+                <ul className="flex flex-col items-center md:items-stretch">
                     {menus.map((menu, index) => {
                         return (
                             <li className="" key={index}>
@@ -201,16 +203,18 @@ const NavBar = () => {
                                             <div className="text-slate-300">
                                                 {menu.logo}
                                             </div>
-                                            <p>{menu.label}</p>
+                                            <p className="hidden md:block">
+                                                {menu.label}
+                                            </p>
                                         </div>
 
                                         <div className="flex items-center">
-                                            {menu.notification != null && (
+                                            {/* {menu.notification != null && (
                                                 <div className="bg-red-500/50 p-1 aspect-square rounded-full text-xs w-5 h-5 flex justify-center items-center">
                                                     {menu.notification}
                                                 </div>
-                                            )}
-                                            {menu.sub_menus.length > 0 ? (
+                                            )} */}
+                                            {/* {menu.sub_menus.length > 0 ? (
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -227,7 +231,7 @@ const NavBar = () => {
                                                 </svg>
                                             ) : (
                                                 <div></div>
-                                            )}
+                                            )} */}
                                         </div>
                                     </div>
                                 </Link>
@@ -240,9 +244,9 @@ const NavBar = () => {
                                                 return (
                                                     <div className="left flex gap-3 items-center px-4 ">
                                                         <div className="text-slate-300 w-6 h-6"></div>
-                                                        <Link href={menu.to}>
+                                                        {/* <Link href={menu.to}>
                                                             {menu.label}
-                                                        </Link>
+                                                        </Link> */}
                                                         {/* {menu.notification !=
                                                             null && (
                                                             <div className="bg-red-500 p-1 aspect-square rounded-full text-xs">

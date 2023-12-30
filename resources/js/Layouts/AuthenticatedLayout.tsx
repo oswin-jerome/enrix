@@ -18,10 +18,12 @@ export default function Authenticated({
         useState(false);
 
     return (
-        <section className="h-screen  w-screen flex">
+        <section className="h-screen  w-screen grid grid-cols-[auto,1fr]">
             <ToastContainer />
-            <NavBar />
-            <section className="flex-1 bg-slate-100 flex flex-col max-w-full ">
+            <div className="col-start-1 row-start-1">
+                <NavBar />
+            </div>
+            <section className=" w-full  bg-slate-100 flex flex-col  col-start-2 row-start-1  overflow-hidden">
                 <AppHeader />
                 <main className="p-4 flex-1 overflow-scroll ">{children}</main>
             </section>
