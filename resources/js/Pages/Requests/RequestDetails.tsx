@@ -59,48 +59,56 @@ const RequestDetails = ({ request }: Props) => {
                 <section className="card">
                     <CardHeader title={"Request : " + request.id} />
 
-                    <table className="table">
-                        <tbody>
-                            <tr>
-                                <th className="border ">ID</th>
-                                <td className="border">{request.id}</td>
-                            </tr>
-                            <tr>
-                                <th className="border ">Category</th>
-                                <td className="border">{request.category}</td>
-                            </tr>
-                            <tr>
-                                <th className="border ">Description</th>
-                                <td className="border">
-                                    {request.description}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th className="border ">Property</th>
-                                <td className="border">
-                                    <Link
-                                        href={`/properties/${request.property_id}`}
-                                    >
-                                        {request.property.property_id}
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th className="border ">Status</th>
-                                <td className="border">{request.status}</td>
-                            </tr>
-                            <tr>
-                                <th className="border ">Rejection Reason</th>
-                                <td className="border">
-                                    {request.rejection_reason}
-                                </td>
-                            </tr>
-                            <tr>
-                                <th className="border ">Linked Task</th>
-                                <td className="border">{request.task_id}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="overflow-x-auto">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th className="border ">ID</th>
+                                    <td className="border">{request.id}</td>
+                                </tr>
+                                <tr>
+                                    <th className="border ">Category</th>
+                                    <td className="border">
+                                        {request.category}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th className="border ">Description</th>
+                                    <td className="border">
+                                        {request.description}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th className="border ">Property</th>
+                                    <td className="border">
+                                        <Link
+                                            href={`/properties/${request.property_id}`}
+                                        >
+                                            {request.property.property_id}
+                                        </Link>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th className="border ">Status</th>
+                                    <td className="border">{request.status}</td>
+                                </tr>
+                                <tr>
+                                    <th className="border ">
+                                        Rejection Reason
+                                    </th>
+                                    <td className="border">
+                                        {request.rejection_reason}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th className="border ">Linked Task</th>
+                                    <td className="border">
+                                        {request.task_id}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
                 {!request.approved_at && !request.rejection_reason && (
                     <section className="card">

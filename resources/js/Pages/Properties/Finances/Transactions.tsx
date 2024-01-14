@@ -267,37 +267,39 @@ const FinanceTransactions = ({
                     </form>
                 </div>
             </Drawer>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Category</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {finance_transactions.map((finance, i) => {
-                        return (
-                            <tr key={i}>
-                                <td>{finance.type}</td>
-                                <td>{finance.category?.name}</td>
-                                <td>
-                                    <span
-                                        className={
-                                            "px-4 py-2 rounded-lg " +
-                                            (finance.type == "income"
-                                                ? "bg-green-500/30 text-green-700"
-                                                : "bg-red-500/30 text-red-700")
-                                        }
-                                    >
-                                        Rs. {finance.amount}
-                                    </span>
-                                </td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            <div className="overflow-x-auto">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {finance_transactions.map((finance, i) => {
+                            return (
+                                <tr key={i}>
+                                    <td>{finance.type}</td>
+                                    <td>{finance.category?.name}</td>
+                                    <td>
+                                        <span
+                                            className={
+                                                "px-4 py-2 rounded-lg " +
+                                                (finance.type == "income"
+                                                    ? "bg-green-500/30 text-green-700"
+                                                    : "bg-red-500/30 text-red-700")
+                                            }
+                                        >
+                                            Rs. {finance.amount}
+                                        </span>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </PropertyLayout>
     );
 };

@@ -33,39 +33,42 @@ const TaskDetails = ({ task }: { task: Task }) => {
                 <section className="card">
                     <CardHeader title={"Details"}></CardHeader>
 
-                    <table className="table">
-                        <tbody>
-                            <tr>
-                                <th>Title</th>
-                                <td>{task.title}</td>
-                            </tr>
-                            <tr>
-                                <th>Description</th>
-                                <td>{task.description}</td>
-                            </tr>
-                            <tr>
-                                <th>Status</th>
-                                <td>{task.status}</td>
-                            </tr>
-                            <tr>
-                                <th>Property</th>
-                                <td>
-                                    <Link
-                                        href={`/properties/${task.property_id}`}
-                                    >
-                                        {task?.property?.property_id}
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>ETA</th>
-                                <td>{task.eta}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="overflow-x-auto">
+                        <table className="table">
+                            <tbody>
+                                <tr>
+                                    <th>Title</th>
+                                    <td>{task.title}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{task.description}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{task.status}</td>
+                                </tr>
+                                <tr>
+                                    <th>Property</th>
+                                    <td>
+                                        <Link
+                                            href={`/properties/${task.property_id}`}
+                                        >
+                                            {task?.property?.property_id}
+                                        </Link>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>ETA</th>
+                                    <td>{task.eta}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
                 <section className="card">
-                    {/* TODO: assignee */}
+                    {/* TODO: assignee
+                     */}
                     <CardHeader title={"Actions"}></CardHeader>
                     <br />
                     <div className="input">

@@ -122,20 +122,22 @@ const RegionSettings = ({ regions, users }: { regions: any; users: any }) => {
                     </button>
                 </div>
             </header>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th className=" pl-0">Region</th>
-                        <th className="">Description</th>
-                        <th className="">Region Manager</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {regions.map((region: any) => {
-                        return <RegionItem region={region} users={users} />;
-                    })}
-                </tbody>
-            </table>
+            <div className="overflow-x-auto">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th className=" pl-0">Region</th>
+                            <th className="">Description</th>
+                            <th className="">Region Manager</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {regions.map((region: any) => {
+                            return <RegionItem region={region} users={users} />;
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

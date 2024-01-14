@@ -203,43 +203,45 @@ const PropertyLogs = ({
                 </Drawer>
 
                 <div className="mt-4">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Type</th>
-                                <th>title</th>
-                                <th>Has Followup?</th>
-                                <th>Attachments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {activities.map((activity) => {
-                                return (
-                                    <tr key={activity.id}>
-                                        <th>{activity.created_at}</th>
-                                        <th>{activity.type}</th>
-                                        <th>{activity.title}</th>
-                                        <th>
-                                            {activity.has_followup == 1
-                                                ? "Yes"
-                                                : "No"}
-                                        </th>
-                                        <td>
-                                            <img
-                                                className="w-12"
-                                                src={
-                                                    activity.media[0]
-                                                        ?.original_url
-                                                }
-                                                alt=""
-                                            />
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
+                    <div className="overflow-x-auto">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>title</th>
+                                    <th>Has Followup?</th>
+                                    <th>Attachments</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {activities.map((activity) => {
+                                    return (
+                                        <tr key={activity.id}>
+                                            <th>{activity.created_at}</th>
+                                            <th>{activity.type}</th>
+                                            <th>{activity.title}</th>
+                                            <th>
+                                                {activity.has_followup == 1
+                                                    ? "Yes"
+                                                    : "No"}
+                                            </th>
+                                            <td>
+                                                <img
+                                                    className="w-12"
+                                                    src={
+                                                        activity.media[0]
+                                                            ?.original_url
+                                                    }
+                                                    alt=""
+                                                />
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </PropertyLayout>

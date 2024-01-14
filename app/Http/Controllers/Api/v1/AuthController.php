@@ -21,6 +21,7 @@ class AuthController extends Controller
         // FIXME: Hash password before storing in DB
         $customer->password = Hash::make($request->password);
         $customer->save();
+
         $customer->password = "";
         return response()->json($customer, 201);
     }

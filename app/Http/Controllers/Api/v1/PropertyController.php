@@ -30,13 +30,13 @@ class PropertyController extends Controller
         $user = Customer::find(auth()->id());
         $property = $user->properties()->create($data);
 
-        // TODO: Process Auth letter
+
         if ($request->hasFile("auth_letter")) {
             $property->addMediaFromRequest("auth_letter")->toMediaCollection('auth_letters');
         }
 
 
-        // TODO: Send notification to region manager and admin
+
         $property->region->manager->notify(new CustomerCreatedAPropertyNotification($property));
 
         // TODO: add approval process

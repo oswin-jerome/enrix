@@ -98,48 +98,66 @@ const PropertyInfo = ({ property }: { property: Property }) => {
         <div className="grid gap-4">
             <section className="card text-wrap">
                 <CardHeader title={"Property details"}></CardHeader>
-                <table className="table border-collapse">
-                    <tbody>
-                        {basics.map((basic, i) => {
-                            return (
-                                <tr key={i}>
-                                    <th className="border">{basic.label}</th>
-                                    <td className="border">{basic.value}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                <div className="overflow-x-auto">
+                    <table className="table border-collapse">
+                        <tbody>
+                            {basics.map((basic, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <th className="border">
+                                            {basic.label}
+                                        </th>
+                                        <td className="border">
+                                            {basic.value}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </section>
             <section className="card text-wrap">
                 <CardHeader title={"Property Address"}></CardHeader>
-                <table className="table border-collapse">
-                    <tbody>
-                        {propertyAddress.map((basic, i) => {
-                            return (
-                                <tr key={i}>
-                                    <th className="border">{basic.label}</th>
-                                    <td className="border">{basic.value}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                <div className="overflow-x-auto">
+                    <table className="table border-collapse">
+                        <tbody>
+                            {propertyAddress.map((basic, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <th className="border">
+                                            {basic.label}
+                                        </th>
+                                        <td className="border">
+                                            {basic.value}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </section>
             <section className="card text-wrap">
                 <CardHeader title={"Poc Details"}></CardHeader>
-                <table className="table border-collapse">
-                    <tbody>
-                        {pocDetails.map((basic, i) => {
-                            return (
-                                <tr key={i}>
-                                    <th className="border">{basic.label}</th>
-                                    <td className="border">{basic.value}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                <div className="overflow-x-auto">
+                    <table className="table border-collapse">
+                        <tbody>
+                            {pocDetails.map((basic, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <th className="border">
+                                            {basic.label}
+                                        </th>
+                                        <td className="border">
+                                            {basic.value}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </section>
             {/* <section className="card text-">
                 <Link href={`/customers/${property.customer_id}`}>
